@@ -1,0 +1,82 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background: Soft cream (#F8F4EE) */
+    --background: 36 42% 95%;
+    /* Foreground: Charcoal text (#1F1F1F) */
+    --foreground: 0 0% 12%;
+
+    /* Card: White/Light Cream */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+
+    /* Primary: Maroon (#6D071A) */
+    --primary: 349 88% 23%;
+    --primary-foreground: 36 42% 95%;
+
+    /* Secondary/Muted: Dark wine (#4A0411) */
+    --secondary: 349 90% 15%;
+    --secondary-foreground: 36 42% 95%;
+
+    /* Muted: Soft grey/cream */
+    --muted: 36 30% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent: Gold (#F4B942) */
+    --accent: 39 89% 61%;
+    --accent-foreground: 0 0% 12%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border: Subtle grey/cream */
+    --border: 36 20% 85%;
+    --input: 36 20% 85%;
+    --ring: 349 88% 23%;
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter tracking-tight;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair tracking-tight;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Luxurious Cinematic Hero Gradient: Dark Wine to Maroon */
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(74, 4, 17, 0.95) 0%, rgba(109, 7, 26, 0.85) 100%);
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-28;
+  }
+  
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
