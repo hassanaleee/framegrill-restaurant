@@ -31,7 +31,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-[#4A0411] to-[#6D071A] text-white border-t-4 border-accent mt-12 md:mt-24 shadow-2xl relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-[#4A0411] to-[#6D071A] text-white border-t-4 border-accent mt-6 md:mt-10 shadow-2xl relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
       
@@ -39,8 +39,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Description */}
           <div className="space-y-6">
-            <div className="flex-shrink-0 bg-white/10 p-4 rounded-2xl inline-block backdrop-blur-md">
-              <img src={Logo} width={180} className="filter brightness-0 invert" alt="FlameGrill Logo" />
+            <div className="flex-shrink-0 bg-white/10 px-6 py-4 rounded-2xl inline-flex items-center gap-2 backdrop-blur-md border border-white/10 hover:border-accent/30 transition-all duration-300">
+              <span className="text-accent text-2xl animate-pulse">🔥</span>
+              <span className="text-2xl font-black text-white tracking-wider uppercase font-playfair">
+                Frame<span className="text-accent">Grill</span>
+              </span>
             </div>
             <p className="text-white/80 leading-relaxed font-light text-lg">
               Experience the finest smoky flavors crafted with premium ingredients and unparalleled passion.

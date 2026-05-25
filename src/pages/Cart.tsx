@@ -99,7 +99,7 @@ const Cart = () => {
             {cart.map((item) => (
               <div 
                 key={item.id} 
-                className="flex flex-col sm:flex-row items-center gap-4 bg-background border border-border/50 rounded-2xl p-4 shadow-sm"
+                className="flex flex-col sm:flex-row items-center gap-4 bg-card border border-border/50 rounded-2xl p-4 shadow-sm"
                 data-aos="fade-up"
               >
                 <img 
@@ -110,7 +110,7 @@ const Cart = () => {
                 
                 <div className="flex-grow text-center sm:text-left">
                   <h3 className="text-lg font-bold text-foreground">{item.name}</h3>
-                  <p className="text-primary font-bold mt-1">Rs. {item.price.toLocaleString()}</p>
+                  <p className="text-primary dark:text-accent font-bold mt-1">Rs. {item.price.toLocaleString()}</p>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -146,7 +146,7 @@ const Cart = () => {
 
           {/* Order Summary */}
           <div className="lg:w-1/3">
-            <div className="bg-background border border-border/50 rounded-2xl p-6 shadow-sm sticky top-28" data-aos="fade-left">
+            <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-sm sticky top-28" data-aos="fade-left">
               <h3 className="text-xl font-bold mb-6">Order Summary</h3>
               
               <div className="space-y-3 mb-6 text-sm">
@@ -167,7 +167,7 @@ const Cart = () => {
               <div className="border-t border-border pt-4 mb-6">
                 <div className="flex justify-between items-end">
                   <span className="text-lg font-bold">Total</span>
-                  <span className="text-2xl font-extrabold text-primary">
+                  <span className="text-2xl font-extrabold text-primary dark:text-accent">
                     Rs. {(cartTotal + Math.round(cartTotal * 0.16) + 150).toLocaleString()}
                   </span>
                 </div>
@@ -176,7 +176,7 @@ const Cart = () => {
               {!showCheckoutForm ? (
                 <button 
                   onClick={() => setShowCheckoutForm(true)}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-4 rounded-xl font-bold text-lg transition-transform active:scale-95 flex justify-center items-center gap-2 shadow-md"
+                  className="w-full bg-primary dark:bg-accent hover:bg-primary/90 dark:hover:bg-accent/90 text-primary-foreground dark:text-accent-foreground py-4 rounded-xl font-bold text-lg transition-transform active:scale-95 flex justify-center items-center gap-2 shadow-md"
                 >
                   Checkout Now
                 </button>
@@ -191,7 +191,7 @@ const Cart = () => {
                       required
                       value={customerDetails.name}
                       onChange={(e) => setCustomerDetails({...customerDetails, name: e.target.value})}
-                      className="w-full px-4 py-2 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm transition-all"
+                      className="w-full px-4 py-2 rounded-xl border border-border bg-background dark:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent text-sm text-foreground transition-all"
                       placeholder="John Doe"
                     />
                   </div>
@@ -203,7 +203,7 @@ const Cart = () => {
                       required
                       value={customerDetails.phone}
                       onChange={(e) => setCustomerDetails({...customerDetails, phone: e.target.value})}
-                      className="w-full px-4 py-2 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm transition-all"
+                      className="w-full px-4 py-2 rounded-xl border border-border bg-background dark:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent text-sm text-foreground transition-all"
                       placeholder="+92 300 1234567"
                     />
                   </div>
@@ -215,7 +215,7 @@ const Cart = () => {
                       required
                       value={customerDetails.email}
                       onChange={(e) => setCustomerDetails({...customerDetails, email: e.target.value})}
-                      className="w-full px-4 py-2 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm transition-all"
+                      className="w-full px-4 py-2 rounded-xl border border-border bg-background dark:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent text-sm text-foreground transition-all"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -227,7 +227,7 @@ const Cart = () => {
                       rows={3}
                       value={customerDetails.address}
                       onChange={(e) => setCustomerDetails({...customerDetails, address: e.target.value})}
-                      className="w-full px-4 py-2 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm transition-all resize-none"
+                      className="w-full px-4 py-2 rounded-xl border border-border bg-background dark:bg-muted/30 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-accent text-sm text-foreground transition-all resize-none"
                       placeholder="House #, Street #, Sector/Area, Lahore"
                     ></textarea>
                   </div>
@@ -235,14 +235,14 @@ const Cart = () => {
                     <button 
                       type="button"
                       onClick={() => setShowCheckoutForm(false)}
-                      className="w-1/3 border border-border hover:bg-muted text-foreground py-3 rounded-xl font-bold text-sm transition-transform active:scale-95"
+                      className="w-1/3 border border-border hover:bg-muted dark:hover:bg-muted/50 text-foreground py-3 rounded-xl font-bold text-sm transition-transform active:scale-95"
                     >
                       Back
                     </button>
                     <button 
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-2/3 bg-primary hover:bg-primary/90 disabled:bg-primary/50 text-primary-foreground py-3 rounded-xl font-bold text-sm transition-transform active:scale-95 flex justify-center items-center gap-2 shadow-md"
+                      className="w-2/3 bg-primary dark:bg-accent hover:bg-primary/90 dark:hover:bg-accent/90 disabled:bg-primary/50 dark:disabled:bg-accent/50 text-primary-foreground dark:text-accent-foreground py-3 rounded-xl font-bold text-sm transition-transform active:scale-95 flex justify-center items-center gap-2 shadow-md"
                     >
                       {isSubmitting ? (
                         <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>

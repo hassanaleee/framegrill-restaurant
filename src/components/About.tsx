@@ -19,7 +19,7 @@ const About = () => {
             {/* Section Heading */}
             <div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-4 uppercase tracking-tight">
-                The <span className="text-primary">FlameGrill</span> Difference
+                The <span className="text-primary dark:text-accent">FlameGrill</span> Difference
               </h2>
               <div className="w-24 h-2 bg-primary rounded-full mb-6" />
             </div>
@@ -46,7 +46,7 @@ const About = () => {
                   data-aos="zoom-in"
                   data-aos-delay={delay}
                 >
-                  <div className="text-3xl md:text-4xl font-black text-primary group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-3xl md:text-4xl font-black text-primary dark:text-accent group-hover:scale-110 transition-transform duration-300">
                     {value}
                   </div>
                   <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground mt-2">{label}</div>

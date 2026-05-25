@@ -38,12 +38,12 @@ const FoodCard: React.FC<FoodCardProps> = ({ id, name, description, price, image
 
       <div className="p-6 md:p-8 flex flex-col flex-grow bg-card relative z-20">
         <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl md:text-2xl font-black text-foreground line-clamp-1 group-hover:text-primary transition-colors tracking-tight">{name}</h3>
+          <h3 className="text-xl md:text-2xl font-black text-foreground line-clamp-1 group-hover:text-primary dark:group-hover:text-accent transition-colors tracking-tight">{name}</h3>
         </div>
         <p className="text-muted-foreground text-base leading-relaxed line-clamp-2 mb-6 flex-grow">{description}</p>
         
         <div className="flex items-center justify-between mt-auto pt-6 border-t border-border/50">
-          <span className="text-2xl font-black text-primary">
+          <span className="text-2xl font-black text-primary dark:text-accent">
             Rs. {price.toLocaleString()}
           </span>
           <button 

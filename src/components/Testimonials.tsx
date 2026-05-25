@@ -41,7 +41,7 @@ const Testimonials = () => {
             Customer Reviews
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6">
-            Hear From Our <span className="text-primary italic font-playfair">Guests</span>
+            Hear From Our <span className="text-primary dark:text-accent italic font-playfair">Guests</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Don't just take our word for it. See what our community says about their FlameGrill experience.
@@ -57,7 +57,7 @@ const Testimonials = () => {
               className="bg-card rounded-[2rem] p-8 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(109,7,26,0.12)] transition-all duration-500 border border-border/40 transform hover:-translate-y-2 relative group"
             >
               {/* Quote Icon Background */}
-              <div className="absolute top-6 right-8 text-primary/10 font-serif text-8xl leading-none select-none group-hover:text-primary/20 transition-colors duration-500">
+              <div className="absolute top-6 right-8 text-primary/10 dark:text-accent/10 font-serif text-8xl leading-none select-none group-hover:text-primary/20 dark:group-hover:text-accent/20 transition-colors duration-500">
                 "
               </div>
               
@@ -80,7 +80,7 @@ const Testimonials = () => {
                 />
                 <div>
                   <h4 className="font-bold text-foreground text-lg">{testimonial.name}</h4>
-                  <p className="text-sm text-primary font-medium">{testimonial.role}</p>
+                  <p className="text-sm text-primary dark:text-accent font-medium">{testimonial.role}</p>
                 </div>
               </div>
             </div>

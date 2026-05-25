@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingCart } from "lucide-react";
-import Logo from "../assets/images/logo.png";
+import { Menu, X, ShoppingCart, Sun, Moon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
@@ -18,6 +17,14 @@ const Header = () => {
   const location = useLocation();
   const { cartCount } = useCart();
 
+  // Theme state initialization
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "light";
+    }
+    return "light";
+  });
+
   // Handle scroll event to toggle background blur and shadow
   useEffect(() => {
     const handleScroll = () => {
@@ -33,25 +40,40 @@ const Header = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  // Synchronize theme with class list and localStorage
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        hasScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg"
-          : "bg-background/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-r from-[#4A0411] to-[#6D071A] shadow-xl shadow-black/20 border-b border-accent/15"
     >
       <nav className="container-width">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className={`flex items-center justify-between transition-all duration-300 ${hasScrolled ? "h-14 md:h-16" : "h-16 md:h-20"}`}>
           {/* Brand Logo */}
           <div className="flex-shrink-0">
-            <Link to="/">
-              <img src={Logo} width={150} className="p-2 filter drop-shadow-md" alt="FlameGrill Logo" />
+            <Link to="/" className="flex items-center gap-2 group select-none">
+              <span className="text-2xl md:text-3xl font-black text-white tracking-wider uppercase font-playfair transition-all duration-300 flex items-center gap-1.5">
+                <span className="text-accent animate-pulse">🔥</span>
+                <span>Frame<span className="text-accent">Grill</span></span>
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex ml-10 space-x-8 items-center">
+          <div className="hidden md:flex ml-10 space-x-6 items-center">
             {NAV_ITEMS.filter(item => item.name !== "Cart").map(({ name, href }) => {
               const isActive = location.pathname === href;
               return (
@@ -59,7 +81,7 @@ const Header = () => {
                   key={name}
                   to={href}
                   className={`px-3 py-2 text-sm font-bold transition-colors duration-200 relative group uppercase tracking-widest ${
-                    isActive ? "text-primary" : "text-foreground hover:text-primary"
+                    isActive ? "text-accent" : "text-white/80 hover:text-accent"
                   }`}
                 >
                   {name}
@@ -72,11 +94,24 @@ const Header = () => {
               );
             })}
             
+            {/* Theme Toggle Button Desktop */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-white/80 hover:text-accent transition-colors transform hover:rotate-12 duration-300 focus:outline-none"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon className="w-5 h-5 fill-white/10" />
+              ) : (
+                <Sun className="w-5 h-5 text-accent fill-accent/10" />
+              )}
+            </button>
+            
             {/* Cart Icon Desktop */}
-            <Link to="/cart" className="relative p-2 text-foreground hover:text-accent transition-colors transform hover:scale-110 duration-200">
+            <Link to="/cart" className="relative p-2 text-white/80 hover:text-accent transition-colors transform hover:scale-110 duration-200">
               <ShoppingCart className="w-6 h-6" />
               {cartCount > 0 && (
-                <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-in zoom-in shadow-md border-2 border-background">
+                <span className="absolute top-0 right-0 bg-accent text-accent-foreground text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center animate-in zoom-in shadow-md border-2 border-[#6D071A]">
                   {cartCount}
                 </span>
               )}
@@ -84,12 +119,25 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Toggle & Cart */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="md:hidden flex items-center gap-2">
+            {/* Theme Toggle Button Mobile */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-white/80 hover:text-accent transition-colors transform hover:rotate-12 duration-300 focus:outline-none"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon className="w-5 h-5 fill-white/10" />
+              ) : (
+                <Sun className="w-5 h-5 text-accent fill-accent/10" />
+              )}
+            </button>
+            
             {/* Cart Icon Mobile */}
-            <Link to="/cart" className="relative p-2 text-foreground hover:text-primary transition-colors">
+            <Link to="/cart" className="relative p-2 text-white/80 hover:text-accent transition-colors">
               <ShoppingCart className="w-6 h-6" />
               {cartCount > 0 && (
-                <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background shadow-sm">
+                <span className="absolute top-0 right-0 bg-accent text-accent-foreground text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#6D071A] shadow-sm">
                   {cartCount}
                 </span>
               )}
@@ -97,7 +145,7 @@ const Header = () => {
             
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-primary focus:outline-none transition-colors duration-200 p-1"
+              className="text-white hover:text-accent focus:outline-none transition-colors duration-200 p-1"
               aria-label="Toggle navigation menu"
             >
               <div className="relative w-7 h-7 flex items-center justify-center">
