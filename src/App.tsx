@@ -11,6 +11,7 @@ import "aos/dist/aos.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import AIChat from "./components/AIChat";
 import { CartProvider } from "./context/CartContext";
 
 // Pages
@@ -51,6 +52,7 @@ const App = () => {
               </main>
               <Footer />
               <WhatsAppButton />
+              <AIChat />
             </div>
           </BrowserRouter>
         </CartProvider>

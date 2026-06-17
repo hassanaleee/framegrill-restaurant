@@ -7,6 +7,7 @@ import About from "@/components/About";
 import WhyChoose from "@/components/WhyChoose";
 import Testimonials from "@/components/Testimonials";
 import FoodGallery from "@/components/FoodGallery";
+import AIRecommendations from "@/components/AIRecommendations";
 
 // Define the main sections of the homepage for easy customization and reordering
 const SECTIONS = [
@@ -14,6 +15,7 @@ const SECTIONS = [
   { id: "best-sellers", Component: BestSellers },
   { id: "about", Component: About },
   { id: "why-choose", Component: WhyChoose },
+  { id: "ai-recommendations", Component: AIRecommendations },
   { id: "testimonials", Component: Testimonials },
   { id: "gallery", Component: FoodGallery },
 ];
